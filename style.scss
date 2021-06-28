@@ -40,7 +40,7 @@ button {
       transition: 500ms;
       color: gray;
     }
-    a:hover{
+    a:hover {
       color: white;
     }
   }
@@ -159,12 +159,15 @@ button {
       }
       .doing {
         :not(label, button) {
-          color: red;
+          color: rgb(255, 255, 255);
         }
       }
       .pending {
         :not(label, button) {
-          color: green;
+          color: rgb(151, 151, 151);
+        }
+        label{
+          color: rgba(128, 128, 128, 0.356);
         }
       }
     }
