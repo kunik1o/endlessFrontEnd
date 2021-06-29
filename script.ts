@@ -65,7 +65,6 @@ const delItem = (id) => {
   );
 };
 
-
 const switchItem = (id) => {
   event.stopPropagation();
   let item = document.getElementById(id);
