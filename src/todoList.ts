@@ -71,7 +71,7 @@ const delItem = (e, id) => {
 
 const switchItem = (e, id) => {
   e.stopPropagation();
-  let item = getEl<HTMLInputElement>("#" + id);
+  let item = document.getElementById(id);
   let newClassName = item.className;
   switch (item.className) {
     case "doing":
@@ -99,8 +99,7 @@ const modifyItem = (e, id) => {
       .getElementsByTagName("p")[0].innerText;
     for (let index = 0; index < prev.length; index++) {
       setTimeout(
-        () =>
-          (getEl<HTMLInputElement>("#add").value += prev[index]),
+        () => (getEl<HTMLInputElement>("#add").value += prev[index]),
         50
       );
     }
