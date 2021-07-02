@@ -1,0 +1,38 @@
+{
+  "name": "endlessfrontend",
+  "version": "0.0.1",
+  "description": "A frontend proj demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "webpack server --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stella3055/endlessFrontEnd.git"
+  },
+  "author": "Kuniklo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stella3055/endlessFrontEnd/issues"
+  },
+  "homepage": "https://github.com/Stella3055/endlessFrontEnd#readme",
+  "dependencies": {
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "html-webpack-plugin": "^5.3.2",
+    "jquery": "^3.6.0",
+    "sass": "^1.35.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.0.0",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.5",
+    "webpack": "^5.41.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.5"
+  }
+}

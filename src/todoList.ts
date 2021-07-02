@@ -5,7 +5,11 @@
 // 设定时间
 // -动态效果
 
+import * as $ from "jquery";
+const getEl = <T extends HTMLElement>(str: string) =>
+  document.querySelector(str) as unknown as T;
 // Initial data
+
 let initVal = [
   {
     name: "使用原生Html5/ES6/CSS3完成一个Todo-List",
@@ -15,7 +19,7 @@ let initVal = [
   {
     name: "使用webpack模块化todo-List",
     time: 1624782194541,
-    status: "doing",
+    status: "done",
   },
   {
     name: "学习前端框架AngularJs/Vue/React，并使用框架重构该app",
@@ -54,8 +58,8 @@ let initVal = [
   },
 ];
 // localStorage.setItem("data", initVal)
-const delItem = (id) => {
-  event.stopPropagation();
+const delItem = (e, id) => {
+  e.stopPropagation();
   $("#" + id).animate(
     {
       opacity: 0,
@@ -65,9 +69,9 @@ const delItem = (id) => {
   );
 };
 
-const switchItem = (id) => {
-  event.stopPropagation();
-  let item = document.getElementById(id);
+const switchItem = (e, id) => {
+  e.stopPropagation();
+  let item = getEl<HTMLInputElement>("#" + id);
   let newClassName = item.className;
   switch (item.className) {
     case "doing":
@@ -86,19 +90,21 @@ const switchItem = (id) => {
   item.getElementsByTagName("label")[0].innerText = newClassName;
 };
 
-const modifyItem = (id) => {
-  let currentInput = document.getElementById("add").value;
+const modifyItem = (e, id) => {
+  e.stopPropagation();
+  let currentInput = getEl<HTMLInputElement>("#add").value;
   if (currentInput == "") {
     let prev = document
       .getElementById(id)
       .getElementsByTagName("p")[0].innerText;
     for (let index = 0; index < prev.length; index++) {
       setTimeout(
-        () => (document.getElementById("add").value += prev[index]),
+        () =>
+          (getEl<HTMLInputElement>("#add").value += prev[index]),
         50
       );
     }
-    delItem(id);
+    delItem(e, id);
   } else {
     console.log(currentInput);
   }
@@ -113,19 +119,19 @@ const createNewItemDom = (newItem) => {
   newDOM.id = newItem.time;
   newDOM.className = newItem.status;
   newDOM.innerHTML = `<label>${newItem.status}</label><p>${newItem.name}</p>`;
-  newDOM.onclick = () => modifyItem(newDOM.id);
+  newDOM.onclick = (e) => modifyItem(e, newDOM.id);
 
   delBtn.innerText = "D";
-  delBtn.onclick = () => delItem(newDOM.id);
+  delBtn.onclick = (e) => delItem(e, newDOM.id);
   switchState.innerText = "S";
-  switchState.onclick = () => switchItem(newDOM.id);
+  switchState.onclick = (e) => switchItem(e, newDOM.id);
   btnCtn.appendChild(delBtn);
   btnCtn.appendChild(switchState);
   newDOM.appendChild(btnCtn);
 
-  newDOM.style.height = 0;
-  newDOM.style.opacity = 0;
-  document.getElementById("todo-list").appendChild(newDOM);
+  newDOM.style.height = "0";
+  newDOM.style.opacity = "0";
+  getEl<HTMLInputElement>("#todo-list").appendChild(newDOM);
   $("#" + newDOM.id).animate(
     {
       height: "2rem",
@@ -136,10 +142,14 @@ const createNewItemDom = (newItem) => {
 };
 
 const addItem = () => {
-  let inputVal = document.getElementById("add").value;
+  let inputVal = getEl<HTMLInputElement>("#add").value;
+  console.log(inputVal);
   if (inputVal) {
-    document.getElementById("add").value = "";
-    document.getElementById("add").placeholder = "Add New Item Here";
+    getEl<HTMLInputElement>("#add").value = "";
+    getEl<HTMLInputElement>("#add").setAttribute(
+      "placeholder",
+      "Add New Item Here"
+    );
     let newItem = {
       name: inputVal,
       time: Date.now().toString(),
@@ -147,7 +157,9 @@ const addItem = () => {
     };
     createNewItemDom(newItem);
   } else {
-    document.getElementById("add").placeholder = "Do Not Submit Null Job";
+    document
+      .getElementById("add")
+      .setAttribute("placeholder", "Do Not Submit Null Job");
   }
 };
 
@@ -155,3 +167,5 @@ const addItem = () => {
 initVal.map((it) => {
   createNewItemDom(it);
 });
+
+getEl<HTMLInputElement>("#add-btn").addEventListener("click", addItem);
