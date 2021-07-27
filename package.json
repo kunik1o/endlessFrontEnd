@@ -1,39 +1,47 @@
 {
   "name": "endlessfrontend",
-  "version": "0.0.1",
-  "description": "A frontend proj demo",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.config.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Stella3055/endlessFrontEnd.git"
-  },
-  "author": "Kuniklo",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Stella3055/endlessFrontEnd/issues"
-  },
-  "homepage": "https://github.com/Stella3055/endlessFrontEnd#readme",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@babel/core": "^7.14.6",
-    "babel-loader": "^8.2.2",
-    "css-loader": "^5.2.6",
-    "html-webpack-plugin": "^5.3.2",
-    "jquery": "^3.6.0",
+    "@date-io/date-fns": "^2.10.11",
+    "@fontsource/roboto": "^4.4.5",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "@material-ui/pickers": "^3.3.10",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "date-fns": "^2.22.1",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
     "sass": "^1.35.1",
-    "sass-loader": "^12.1.0",
-    "style-loader": "^3.0.0",
-    "ts-loader": "^9.2.3",
-    "typescript": "^4.3.5",
-    "webpack": "^5.41.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "web-vitals": "^1.0.1"
   },
-  "devDependencies": {
-    "@types/jquery": "^3.5.5"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

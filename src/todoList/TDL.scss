@@ -1,0 +1,29 @@
+.body {
+}
+.TDL {
+  background-color: black;
+  color: white;
+  // height: 100%;
+  h1,
+  h2 {
+    text-align: center;
+  }
+  #title {
+    border: 1px solid transparent;
+  }
+}
+#timeline-container {
+  #timeline {
+    margin: 0;
+  }
+}
+.taskCard {
+  width: 85%;
+  // margin: 5px;
+  // background-color: black !important;
+}
+.MuiTimelineOppositeContent-root {
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  min-width: 5em;
+}
